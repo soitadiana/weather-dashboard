@@ -172,9 +172,8 @@ elements.form.addEventListener('submit', (event) => {
 
 // Initial load behavior
 window.onload = () => {
-    const initialCity = 'Singapore'; 
-    elements.input.value = initialCity; 
-    fetchWeatherAndStartPolling(initialCity);
+    // Remove the default city load. Now the field starts empty.
+    elements.message.innerHTML = 'Enter a city name to begin!';
 };
 
 // Safety measure: Stop polling when the user leaves the page
