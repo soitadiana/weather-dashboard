@@ -1,0 +1,46 @@
+
+/* Base styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 1.5s ease-in-out; /* Smooth background transition */
+    background-size: cover; /* Ensures background covers the entire viewport */
+}
+
+/* --- Dynamic Weather Themes --- */
+/* Default/Fallback */
+body {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); /* Blue/Dark default */
+}
+
+/* CLEAR Sky */
+body[data-weather="Clear"] {
+    background: linear-gradient(135deg, #F39C12 0%, #2980B9 100%); /* Sunset Orange to Sky Blue */
+}
+
+/* CLOUDS */
+body[data-weather="Clouds"] {
+    background: linear-gradient(135deg, #B2C3CD 0%, #7F8C8D 100%); /* Light Gray to Slate Gray */
+}
+
+/* RAIN/DRIZZLE */
+body[data-weather="Rain"], body[data-weather="Drizzle"] {
+    background: linear-gradient(135deg, #34495E 0%, #748B9D 100%); /* Dark Blue Gray to Medium Gray */
+}
+
+/* THUNDERSTORM */
+body[data-weather="Thunderstorm"] {
+    background: linear-gradient(135deg, #2C3E50 0%, #17202A 100%); /* Deep Blue to Dark Slate */
+}
+
+/* SNOW */
+body[data-weather="Snow"] {
+    background: linear-gradient(135deg, #ECF0F1 0%, #BDC3C7 100%); /* Very Light Gray to Silver */
+}
+
+/* MIST/HAZE/FOG (Atmosphere) */
+body[data-weather="Mist"], body[data-weather="Haze"], body[data-weather="Fog"] {
+    background: linear-gradient(135deg, #BDC3C7 0%, #95A5A6 100%); /* Silver to Light Gray */
+}

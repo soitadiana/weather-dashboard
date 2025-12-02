@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Weather Dashboard</title>
+    <!-- Link to external Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to custom styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Configure Tailwind theme (must remain in HTML head if using CDN) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'sky-blue': '#4A90E2',
+                        'dark-gray': '#2C3E50',
+                        'light-bg': '#ECF0F1',
+                        'weather-card': 'rgba(255, 255, 255, 0.95)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans">
+
+    <div id="app" class="p-4 sm:p-8 w-full max-w-lg">
+        <!-- Weather Card ensures high contrast text on the dynamic background -->
+        <div class="bg-weather-card backdrop-blur-sm shadow-2xl rounded-xl p-6 sm:p-8 transition-all duration-300">
+            
+            <h1 class="text-3xl font-bold text-dark-gray mb-6 text-center">
+                Weather Dashboard
+            </h1>
+
+            <!-- Search Form -->
+            <form id="search-form" class="flex flex-col sm:flex-row gap-3 mb-6">
+                <input
+                    type="text"
+                    id="city-input"
+                    placeholder="Enter City Name (e.g., London)"
+                    class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-sky-blue focus:border-sky-blue transition duration-200 shadow-inner"
+                    required
+                >
+                <button
+                    type="submit"
+                    class="bg-sky-blue text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200 shadow-md hover:shadow-lg active:scale-95"
+                >
+                    Get Weather
+                </button>
+            </form>
+
+            <!-- Loading/Error Indicator -->
+            <div id="message-area" class="text-center text-sm font-medium h-6"></div>
+
+            <!-- Weather Display Card -->
+            <div id="weather-display" class="hidden text-dark-gray mt-8">
+                <!-- Location -->
+                <h2 id="location" class="text-4xl font-extrabold text-center mb-2"></h2>
+                
+                <!-- Icon and Description -->
+                <div class="flex flex-col items-center justify-center mb-4">
+                    <img id="weather-icon" src="" alt="Weather Icon" class="w-20 h-20">
+                    <p id="description" class="text-xl font-medium capitalize"></p>
+                </div>
+                
+                <!-- Main Temperature -->
+                <p id="temperature" class="text-7xl font-light text-center mb-6 border-b pb-4 border-gray-200"></p>
+                
+                <!-- Details Grid -->
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <!-- Humidity -->
+                    <div class="p-3 bg-light-bg rounded-lg shadow-inner">
+                        <p class="text-sm font-semibold text-gray-600">Humidity</p>
+                        <p id="humidity" class="text-xl font-bold mt-1"></p>
+                    </div>
+                    <!-- Wind Speed -->
+                    <div class="p-3 bg-light-bg rounded-lg shadow-inner">
+                        <p class="text-sm font-semibold text-gray-600">Wind</p>
+                        <p id="wind-speed" class="text-xl font-bold mt-1"></p>
+                    </div>
+                    <!-- Feels Like -->
+                    <div class="p-3 bg-light-bg rounded-lg shadow-inner">
+                        <p class="text-sm font-semibold text-gray-600">Feels Like</p>
+                        <p id="feels-like" class="text-xl font-bold mt-1"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documentation Area -->
+            <div class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500 text-center">
+                <p>This dashboard is powered by the OpenWeatherMap API and updates automatically every 60 seconds.</p>
+                <p>⚠️ **ACTION REQUIRED:** Ensure your `app.js` file contains a valid OpenWeatherMap key.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="app.js"></script>
+</body>
+</html>
